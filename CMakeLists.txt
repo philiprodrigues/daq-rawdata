@@ -5,15 +5,10 @@ find_package(daq-cmake REQUIRED)
 
 daq_setup_environment()
 
-#find_package(cetlib REQUIRED)
-#find_package(ers REQUIRED)
-
-#set(RAWDATA_DEPENDENCIES ${CETLIB} ${CETLIB_EXCEPT} ers::ers cmdlib::cmdlib nlohmann_json::nlohmann_json pistache_shared)
-
 ##############################################################################
 # Main library
 
-#daq_add_library(*.cpp LINK_LIBRARIES ${RAWDATA_DEPENDENCIES})
+daq_add_library(*.cpp)
 
 ##############################################################################
 # Plugins
@@ -23,7 +18,8 @@ daq_setup_environment()
 ##############################################################################
 # Integration tests
 
-#daq_add_application(test_raw_app test_raw_app.cxx TEST LINK_LIBRARIES daq-rawdata)
+daq_add_application(in_out_test in_out_test.cxx TEST LINK_LIBRARIES daq-rawdata)
+daq_add_application(check_frame_vs_unpack check_frame_vs_unpack.cxx TEST LINK_LIBRARIES daq-rawdata)
 
 ##############################################################################
 # No unit tests written
